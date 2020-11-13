@@ -1,0 +1,596 @@
+
+GSM_Security_6_2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000002c6  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000016  00800060  000002c6  0000035a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000004  00800076  00800076  00000370  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000370  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000003a0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000e0  00000000  00000000  000003dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000c51  00000000  00000000  000004bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006d3  00000000  00000000  0000110d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000683  00000000  00000000  000017e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001f0  00000000  00000000  00001e64  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000447  00000000  00000000  00002054  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000477  00000000  00000000  0000249b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000f0  00000000  00000000  00002912  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	0e c1       	rjmp	.+540    	; 0x22a <__vector_6>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e6 ec       	ldi	r30, 0xC6	; 198
+  3a:	f2 e0       	ldi	r31, 0x02	; 2
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a6 37       	cpi	r26, 0x76	; 118
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	20 e0       	ldi	r18, 0x00	; 0
+  4a:	a6 e7       	ldi	r26, 0x76	; 118
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	aa 37       	cpi	r26, 0x7A	; 122
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	b2 d0       	rcall	.+356    	; 0x1be <main>
+  5a:	33 c1       	rjmp	.+614    	; 0x2c2 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <Sirena_ON>:
+		if(i>30) break;
+	}
+}
+void SignalLampOFF(void)
+{
+	PORTC &= ~(1<<3);
+  5e:	aa 9a       	sbi	0x15, 2	; 21
+  60:	08 95       	ret
+
+00000062 <Sirena_OFF>:
+  62:	aa 98       	cbi	0x15, 2	; 21
+  64:	08 95       	ret
+
+00000066 <Buzzer_ON>:
+  66:	ac 98       	cbi	0x15, 4	; 21
+  68:	08 95       	ret
+
+0000006a <Buzzer_OFF>:
+  6a:	ac 9a       	sbi	0x15, 4	; 21
+  6c:	08 95       	ret
+
+0000006e <BuzzerVoice>:
+  6e:	0f 93       	push	r16
+  70:	1f 93       	push	r17
+  72:	cf 93       	push	r28
+  74:	df 93       	push	r29
+  76:	18 16       	cp	r1, r24
+  78:	19 06       	cpc	r1, r25
+  7a:	dc f4       	brge	.+54     	; 0xb2 <BuzzerVoice+0x44>
+  7c:	8c 01       	movw	r16, r24
+  7e:	c0 e0       	ldi	r28, 0x00	; 0
+  80:	d0 e0       	ldi	r29, 0x00	; 0
+  82:	f1 df       	rcall	.-30     	; 0x66 <Buzzer_ON>
+  84:	2f ef       	ldi	r18, 0xFF	; 255
+  86:	80 e7       	ldi	r24, 0x70	; 112
+  88:	92 e0       	ldi	r25, 0x02	; 2
+  8a:	21 50       	subi	r18, 0x01	; 1
+  8c:	80 40       	sbci	r24, 0x00	; 0
+  8e:	90 40       	sbci	r25, 0x00	; 0
+  90:	e1 f7       	brne	.-8      	; 0x8a <BuzzerVoice+0x1c>
+  92:	00 c0       	rjmp	.+0      	; 0x94 <BuzzerVoice+0x26>
+  94:	00 00       	nop
+  96:	e9 df       	rcall	.-46     	; 0x6a <Buzzer_OFF>
+  98:	2f ef       	ldi	r18, 0xFF	; 255
+  9a:	80 e7       	ldi	r24, 0x70	; 112
+  9c:	92 e0       	ldi	r25, 0x02	; 2
+  9e:	21 50       	subi	r18, 0x01	; 1
+  a0:	80 40       	sbci	r24, 0x00	; 0
+  a2:	90 40       	sbci	r25, 0x00	; 0
+  a4:	e1 f7       	brne	.-8      	; 0x9e <BuzzerVoice+0x30>
+  a6:	00 c0       	rjmp	.+0      	; 0xa8 <BuzzerVoice+0x3a>
+  a8:	00 00       	nop
+  aa:	21 96       	adiw	r28, 0x01	; 1
+  ac:	0c 17       	cp	r16, r28
+  ae:	1d 07       	cpc	r17, r29
+  b0:	41 f7       	brne	.-48     	; 0x82 <BuzzerVoice+0x14>
+  b2:	df 91       	pop	r29
+  b4:	cf 91       	pop	r28
+  b6:	1f 91       	pop	r17
+  b8:	0f 91       	pop	r16
+  ba:	08 95       	ret
+
+000000bc <StatusLed_ON>:
+  bc:	ad 98       	cbi	0x15, 5	; 21
+  be:	08 95       	ret
+
+000000c0 <StatusLed_OFF>:
+  c0:	ad 9a       	sbi	0x15, 5	; 21
+  c2:	08 95       	ret
+
+000000c4 <StatusLed_BLINK_two>:
+  c4:	fb df       	rcall	.-10     	; 0xbc <StatusLed_ON>
+  c6:	2f e7       	ldi	r18, 0x7F	; 127
+  c8:	89 ea       	ldi	r24, 0xA9	; 169
+  ca:	93 e0       	ldi	r25, 0x03	; 3
+  cc:	21 50       	subi	r18, 0x01	; 1
+  ce:	80 40       	sbci	r24, 0x00	; 0
+  d0:	90 40       	sbci	r25, 0x00	; 0
+  d2:	e1 f7       	brne	.-8      	; 0xcc <StatusLed_BLINK_two+0x8>
+  d4:	00 c0       	rjmp	.+0      	; 0xd6 <StatusLed_BLINK_two+0x12>
+  d6:	00 00       	nop
+  d8:	f3 df       	rcall	.-26     	; 0xc0 <StatusLed_OFF>
+  da:	2f e7       	ldi	r18, 0x7F	; 127
+  dc:	89 ea       	ldi	r24, 0xA9	; 169
+  de:	93 e0       	ldi	r25, 0x03	; 3
+  e0:	21 50       	subi	r18, 0x01	; 1
+  e2:	80 40       	sbci	r24, 0x00	; 0
+  e4:	90 40       	sbci	r25, 0x00	; 0
+  e6:	e1 f7       	brne	.-8      	; 0xe0 <StatusLed_BLINK_two+0x1c>
+  e8:	00 c0       	rjmp	.+0      	; 0xea <StatusLed_BLINK_two+0x26>
+  ea:	00 00       	nop
+  ec:	08 95       	ret
+
+000000ee <StatusLed_BLINK_one>:
+  ee:	e6 df       	rcall	.-52     	; 0xbc <StatusLed_ON>
+  f0:	2f e7       	ldi	r18, 0x7F	; 127
+  f2:	89 ea       	ldi	r24, 0xA9	; 169
+  f4:	93 e0       	ldi	r25, 0x03	; 3
+  f6:	21 50       	subi	r18, 0x01	; 1
+  f8:	80 40       	sbci	r24, 0x00	; 0
+  fa:	90 40       	sbci	r25, 0x00	; 0
+  fc:	e1 f7       	brne	.-8      	; 0xf6 <StatusLed_BLINK_one+0x8>
+  fe:	00 c0       	rjmp	.+0      	; 0x100 <StatusLed_BLINK_one+0x12>
+ 100:	00 00       	nop
+ 102:	de df       	rcall	.-68     	; 0xc0 <StatusLed_OFF>
+ 104:	2f e7       	ldi	r18, 0x7F	; 127
+ 106:	89 ea       	ldi	r24, 0xA9	; 169
+ 108:	93 e0       	ldi	r25, 0x03	; 3
+ 10a:	21 50       	subi	r18, 0x01	; 1
+ 10c:	80 40       	sbci	r24, 0x00	; 0
+ 10e:	90 40       	sbci	r25, 0x00	; 0
+ 110:	e1 f7       	brne	.-8      	; 0x10a <StatusLed_BLINK_one+0x1c>
+ 112:	00 c0       	rjmp	.+0      	; 0x114 <StatusLed_BLINK_one+0x26>
+ 114:	00 00       	nop
+ 116:	08 95       	ret
+
+00000118 <SignalLampBlink>:
+}
+void SignalLampBlink(void)
+{
+	PORTC = PORTC ^ (1<<PC3);
+ 118:	95 b3       	in	r25, 0x15	; 21
+ 11a:	88 e0       	ldi	r24, 0x08	; 8
+ 11c:	89 27       	eor	r24, r25
+ 11e:	85 bb       	out	0x15, r24	; 21
+ 120:	08 95       	ret
+
+00000122 <StatusLedBlink>:
+}
+void StatusLedBlink(void)
+{
+	PORTC ^= (1<<PC5);
+ 122:	95 b3       	in	r25, 0x15	; 21
+ 124:	80 e2       	ldi	r24, 0x20	; 32
+ 126:	89 27       	eor	r24, r25
+ 128:	85 bb       	out	0x15, r24	; 21
+ 12a:	08 95       	ret
+
+0000012c <Timer_Init>:
+}
+void Timer_Init(void)
+{
+	TCCR1B |= (1<<WGM12); // устанавливаем режим СТС (сброс по совпадению)
+ 12c:	8e b5       	in	r24, 0x2e	; 46
+ 12e:	88 60       	ori	r24, 0x08	; 8
+ 130:	8e bd       	out	0x2e, r24	; 46
+	TIMSK |= (1<<OCIE1A); //устанавливаем бит разрешени¤ прерывани¤ 1ого счетчика по совпадению с OCR1A(H и L)
+ 132:	89 b7       	in	r24, 0x39	; 57
+ 134:	80 61       	ori	r24, 0x10	; 16
+ 136:	89 bf       	out	0x39, r24	; 57
+	
+	OCR1AH = 0x7A; //переривання по переповненню зпрацьовуватиме раз на секунду
+ 138:	8a e7       	ldi	r24, 0x7A	; 122
+ 13a:	8b bd       	out	0x2b, r24	; 43
+	OCR1AL = 0x11;
+ 13c:	81 e1       	ldi	r24, 0x11	; 17
+ 13e:	8a bd       	out	0x2a, r24	; 42
+	
+	TCCR1B |= (1<<CS12);//дільник на 256.
+ 140:	8e b5       	in	r24, 0x2e	; 46
+ 142:	84 60       	ori	r24, 0x04	; 4
+ 144:	8e bd       	out	0x2e, r24	; 46
+ 146:	08 95       	ret
+
+00000148 <PortInit>:
+}
+void PortInit(void)
+{
+	
+	DDRC |= (1<<2)|(1<<3)|(1<<4)|(1<<5);          //виходи
+ 148:	84 b3       	in	r24, 0x14	; 20
+ 14a:	8c 63       	ori	r24, 0x3C	; 60
+ 14c:	84 bb       	out	0x14, r24	; 20
+	PORTC |= (0<<2)|(0<<3)|(1<<4)|(1<<5);
+ 14e:	85 b3       	in	r24, 0x15	; 21
+ 150:	80 63       	ori	r24, 0x30	; 48
+ 152:	85 bb       	out	0x15, r24	; 21
+	DDRD &= ~(1<<2)|(1<<3)|(1<<4);                //входи
+ 154:	8a 98       	cbi	0x11, 2	; 17
+	PORTD |= (0<<2)|(0<<3)|(0<<4);
+ 156:	82 b3       	in	r24, 0x12	; 18
+ 158:	82 bb       	out	0x12, r24	; 18
+	DDRB &= ~(1<<0);                              //вхід сенсора відкриття дверей.
+ 15a:	b8 98       	cbi	0x17, 0	; 23
+	PORTB |= (1<<0);                              // Підтяжка +5В + на платі є апаратна підтяжка
+ 15c:	c0 9a       	sbi	0x18, 0	; 24
+ 15e:	08 95       	ret
+
+00000160 <SecurityON>:
+}
+void SecurityON(void)
+{
+	BuzzerVoice(1);
+ 160:	81 e0       	ldi	r24, 0x01	; 1
+ 162:	90 e0       	ldi	r25, 0x00	; 0
+ 164:	84 df       	rcall	.-248    	; 0x6e <BuzzerVoice>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 166:	2f ef       	ldi	r18, 0xFF	; 255
+ 168:	81 e1       	ldi	r24, 0x11	; 17
+ 16a:	9a e7       	ldi	r25, 0x7A	; 122
+ 16c:	21 50       	subi	r18, 0x01	; 1
+ 16e:	80 40       	sbci	r24, 0x00	; 0
+ 170:	90 40       	sbci	r25, 0x00	; 0
+ 172:	e1 f7       	brne	.-8      	; 0x16c <SecurityON+0xc>
+ 174:	00 c0       	rjmp	.+0      	; 0x176 <SecurityON+0x16>
+ 176:	00 00       	nop
+	_delay_ms(5000);
+	SecurStatus = 1;
+ 178:	81 e0       	ldi	r24, 0x01	; 1
+ 17a:	90 e0       	ldi	r25, 0x00	; 0
+ 17c:	90 93 79 00 	sts	0x0079, r25	; 0x800079 <SecurStatus+0x1>
+ 180:	80 93 78 00 	sts	0x0078, r24	; 0x800078 <SecurStatus>
+	LampGood = 0; // Мигає світлодіод
+ 184:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <LampGood+0x1>
+ 188:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <LampGood>
+	BuzzerVoice(2);
+ 18c:	82 e0       	ldi	r24, 0x02	; 2
+ 18e:	90 e0       	ldi	r25, 0x00	; 0
+ 190:	6e df       	rcall	.-292    	; 0x6e <BuzzerVoice>
+	StatusLed_BLINK_two();
+ 192:	98 df       	rcall	.-208    	; 0xc4 <StatusLed_BLINK_two>
+ 194:	08 95       	ret
+
+00000196 <SecurityOFF>:
+}
+void SecurityOFF(void)
+{
+	SecurStatus = 0;
+ 196:	10 92 79 00 	sts	0x0079, r1	; 0x800079 <SecurStatus+0x1>
+ 19a:	10 92 78 00 	sts	0x0078, r1	; 0x800078 <SecurStatus>
+	CallState = 0;
+ 19e:	10 92 77 00 	sts	0x0077, r1	; 0x800077 <__data_end+0x1>
+ 1a2:	10 92 76 00 	sts	0x0076, r1	; 0x800076 <__data_end>
+	LampGood = 2; // Не мигає нічого
+ 1a6:	82 e0       	ldi	r24, 0x02	; 2
+ 1a8:	90 e0       	ldi	r25, 0x00	; 0
+ 1aa:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <LampGood+0x1>
+ 1ae:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <LampGood>
+	StatusLed_OFF();
+ 1b2:	86 df       	rcall	.-244    	; 0xc0 <StatusLed_OFF>
+	BuzzerVoice(1);
+ 1b4:	81 e0       	ldi	r24, 0x01	; 1
+ 1b6:	90 e0       	ldi	r25, 0x00	; 0
+ 1b8:	5a df       	rcall	.-332    	; 0x6e <BuzzerVoice>
+	StatusLed_BLINK_one();
+ 1ba:	99 df       	rcall	.-206    	; 0xee <StatusLed_BLINK_one>
+ 1bc:	08 95       	ret
+
+000001be <main>:
+int main(void)
+{
+	
+	
+	
+	Timer_Init();
+ 1be:	b6 df       	rcall	.-148    	; 0x12c <Timer_Init>
+	USART_ini();
+ 1c0:	64 d0       	rcall	.+200    	; 0x28a <USART_ini>
+	PortInit();
+ 1c2:	c2 df       	rcall	.-124    	; 0x148 <PortInit>
+	sei();
+ 1c4:	78 94       	sei
+		
+		
+			if(SecurStatus == 0)  //При вимкненій охороні
+			{
+				Sirena_OFF();
+				LampGood = 2;
+ 1c6:	c2 e0       	ldi	r28, 0x02	; 2
+ 1c8:	d0 e0       	ldi	r29, 0x00	; 0
+				       
+					   
+					if(CallState == 0)
+					{
+						Sirena_ON();
+					    LampGood = 1;
+ 1ca:	01 e0       	ldi	r16, 0x01	; 1
+ 1cc:	10 e0       	ldi	r17, 0x00	; 0
+	PortInit();
+	sei();
+	while (1)
+	{
+		
+			if((PIND&0b00001000)) // "A" Стаємо на охорону кнопкою "А" на пульту
+ 1ce:	83 99       	sbic	0x10, 3	; 16
+		
+			{
+				SecurityON();
+ 1d0:	c7 df       	rcall	.-114    	; 0x160 <SecurityON>
+			}
+		
+
+			if((PIND&0b00000100)) // "B" Вимикаємо охорону кнопкою "В" на пульту
+ 1d2:	82 99       	sbic	0x10, 2	; 16
+		
+			{
+				SecurityOFF();
+ 1d4:	e0 df       	rcall	.-64     	; 0x196 <SecurityOFF>
+			}
+		
+		
+			if(SecurStatus == 0)  //При вимкненій охороні
+ 1d6:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <SecurStatus>
+ 1da:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <SecurStatus+0x1>
+ 1de:	89 2b       	or	r24, r25
+ 1e0:	29 f4       	brne	.+10     	; 0x1ec <main+0x2e>
+			{
+				Sirena_OFF();
+ 1e2:	3f df       	rcall	.-386    	; 0x62 <Sirena_OFF>
+				LampGood = 2;
+ 1e4:	d0 93 61 00 	sts	0x0061, r29	; 0x800061 <LampGood+0x1>
+ 1e8:	c0 93 60 00 	sts	0x0060, r28	; 0x800060 <LampGood>
+			}
+		
+			if(SecurStatus == 1) //При ввімкненій охороні.
+ 1ec:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <SecurStatus>
+ 1f0:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <SecurStatus+0x1>
+ 1f4:	01 97       	sbiw	r24, 0x01	; 1
+ 1f6:	59 f7       	brne	.-42     	; 0x1ce <main+0x10>
+			{
+				//Мигає світлодіод 1 раз/сек
+				//В разі зпрацювання SR 501 на вході PD4 формується низький	 р-нь.
+				if(PIND&0b00010000 || !(PINB&0b00000001)) //якщо зпрацював сенсор руху або сенсор дверей при ввімкненій охороні
+ 1f8:	84 99       	sbic	0x10, 4	; 16
+ 1fa:	02 c0       	rjmp	.+4      	; 0x200 <main+0x42>
+ 1fc:	b0 99       	sbic	0x16, 0	; 22
+ 1fe:	e7 cf       	rjmp	.-50     	; 0x1ce <main+0x10>
+				{
+				
+				       
+					   
+					if(CallState == 0)
+ 200:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <__data_end>
+ 204:	90 91 77 00 	lds	r25, 0x0077	; 0x800077 <__data_end+0x1>
+ 208:	89 2b       	or	r24, r25
+ 20a:	09 f7       	brne	.-62     	; 0x1ce <main+0x10>
+					{
+						Sirena_ON();
+ 20c:	28 df       	rcall	.-432    	; 0x5e <Sirena_ON>
+					    LampGood = 1;
+ 20e:	10 93 61 00 	sts	0x0061, r17	; 0x800061 <LampGood+0x1>
+ 212:	00 93 60 00 	sts	0x0060, r16	; 0x800060 <LampGood>
+						
+						cli();
+ 216:	f8 94       	cli
+						usart_putline("ATD+380972265447;\r");
+ 218:	82 e6       	ldi	r24, 0x62	; 98
+ 21a:	90 e0       	ldi	r25, 0x00	; 0
+ 21c:	42 d0       	rcall	.+132    	; 0x2a2 <usart_putline>
+						sei();
+ 21e:	78 94       	sei
+						CallState = 1;
+ 220:	10 93 77 00 	sts	0x0077, r17	; 0x800077 <__data_end+0x1>
+ 224:	00 93 76 00 	sts	0x0076, r16	; 0x800076 <__data_end>
+ 228:	d2 cf       	rjmp	.-92     	; 0x1ce <main+0x10>
+
+0000022a <__vector_6>:
+	StatusLed_OFF();
+	BuzzerVoice(1);
+	StatusLed_BLINK_one();
+}
+ISR (TIMER1_COMPA_vect)
+{
+ 22a:	1f 92       	push	r1
+ 22c:	0f 92       	push	r0
+ 22e:	0f b6       	in	r0, 0x3f	; 63
+ 230:	0f 92       	push	r0
+ 232:	11 24       	eor	r1, r1
+ 234:	2f 93       	push	r18
+ 236:	3f 93       	push	r19
+ 238:	4f 93       	push	r20
+ 23a:	5f 93       	push	r21
+ 23c:	6f 93       	push	r22
+ 23e:	7f 93       	push	r23
+ 240:	8f 93       	push	r24
+ 242:	9f 93       	push	r25
+ 244:	af 93       	push	r26
+ 246:	bf 93       	push	r27
+ 248:	ef 93       	push	r30
+ 24a:	ff 93       	push	r31
+	if(LampGood == 1)
+ 24c:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <LampGood>
+ 250:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <LampGood+0x1>
+ 254:	81 30       	cpi	r24, 0x01	; 1
+ 256:	91 05       	cpc	r25, r1
+ 258:	11 f4       	brne	.+4      	; 0x25e <__vector_6+0x34>
+	SignalLampBlink();
+ 25a:	5e df       	rcall	.-324    	; 0x118 <SignalLampBlink>
+ 25c:	05 c0       	rjmp	.+10     	; 0x268 <__vector_6+0x3e>
+	else if(LampGood == 0)
+ 25e:	89 2b       	or	r24, r25
+ 260:	11 f4       	brne	.+4      	; 0x266 <__vector_6+0x3c>
+	StatusLedBlink();
+ 262:	5f df       	rcall	.-322    	; 0x122 <StatusLedBlink>
+ 264:	01 c0       	rjmp	.+2      	; 0x268 <__vector_6+0x3e>
+	else
+	asm("nop");
+ 266:	00 00       	nop
+ 268:	ff 91       	pop	r31
+ 26a:	ef 91       	pop	r30
+ 26c:	bf 91       	pop	r27
+ 26e:	af 91       	pop	r26
+ 270:	9f 91       	pop	r25
+ 272:	8f 91       	pop	r24
+ 274:	7f 91       	pop	r23
+ 276:	6f 91       	pop	r22
+ 278:	5f 91       	pop	r21
+ 27a:	4f 91       	pop	r20
+ 27c:	3f 91       	pop	r19
+ 27e:	2f 91       	pop	r18
+ 280:	0f 90       	pop	r0
+ 282:	0f be       	out	0x3f, r0	; 63
+ 284:	0f 90       	pop	r0
+ 286:	1f 90       	pop	r1
+ 288:	18 95       	reti
+
+0000028a <USART_ini>:
+  UBRRL = (unsigned char) speed;
+  UCSRB = (1<<RXEN)|(1<<TXEN); // Р’РјРёРєР°С”РјРѕ РїСЂРёР№РѕРј С‚Р° РїРµСЂРµРґР°С‡Сѓ
+  UCSRB |=(0<<RXCIE); // Р”РѕР·РІС–Р» РїРµСЂРµСЂРёРІР°РЅРЅСЏ
+  UCSRA |=(1<<U2X);// Р’РІС–РјРєРЅРµРЅРЅСЏ РїРѕРґРІРѕС”РЅРЅСЏ С‡Р°СЃС‚РѕС‚Рё
+  UCSRC = (1<<URSEL)|(1<<USBS)|(1<<UCSZ1)|(1<<UCSZ0)|(0<<UPM1)|(0<<UPM0); //Р—РІРµСЂС‚Р°С”РјРѕСЃСЊ РґРѕ UCSRC */
+  UBRRH = 0;
+ 28a:	10 bc       	out	0x20, r1	; 32
+  UBRRL = 51; //СЃРєРѕСЂРѕСЃС‚СЊ РѕР±РјРµРЅР° 112500 Р±РѕРґ
+ 28c:	83 e3       	ldi	r24, 0x33	; 51
+ 28e:	89 b9       	out	0x09, r24	; 9
+  //СЂР°Р·СЂ. РїСЂРµСЂС‹РІ РїСЂРё РїСЂРёРµРјРµ, СЂР°Р·СЂ РїСЂРёРµРјР°, СЂР°Р·СЂ РїРµСЂРµРґР°С‡Рё.
+  UCSRB = (1<<RXEN)|(1<<TXEN);
+ 290:	88 e1       	ldi	r24, 0x18	; 24
+ 292:	8a b9       	out	0x0a, r24	; 10
+  //РѕР±СЂР°С‰Р°РµРјСЃСЏ Рє СЂРµРіРёСЃС‚СЂСѓ UCSRS, СЂР°Р·РјРµСЂ СЃР»РѕРІР° вЂ“ 8 Р±РёС‚
+  UCSRC = (1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0)|(1<<UPM0)|(1<<UPM1);
+ 294:	86 eb       	ldi	r24, 0xB6	; 182
+ 296:	80 bd       	out	0x20, r24	; 32
+ 298:	08 95       	ret
+
+0000029a <USART_Transmit>:
+ 
+
+  }
+void USART_Transmit (unsigned char data){
+    
+	while(!(UCSRA&(1<<UDRE)));
+ 29a:	5d 9b       	sbis	0x0b, 5	; 11
+ 29c:	fe cf       	rjmp	.-4      	; 0x29a <USART_Transmit>
+    UDR=data;
+ 29e:	8c b9       	out	0x0c, r24	; 12
+ 2a0:	08 95       	ret
+
+000002a2 <usart_putline>:
+    
+   	
+}	
+void usart_putline(char *buffer)
+{
+ 2a2:	cf 93       	push	r28
+ 2a4:	df 93       	push	r29
+ 2a6:	ec 01       	movw	r28, r24
+	while (*buffer!=0)
+ 2a8:	88 81       	ld	r24, Y
+ 2aa:	88 23       	and	r24, r24
+ 2ac:	29 f0       	breq	.+10     	; 0x2b8 <usart_putline+0x16>
+ 2ae:	21 96       	adiw	r28, 0x01	; 1
+	{
+		USART_Transmit(*buffer);
+ 2b0:	f4 df       	rcall	.-24     	; 0x29a <USART_Transmit>
+    
+   	
+}	
+void usart_putline(char *buffer)
+{
+	while (*buffer!=0)
+ 2b2:	89 91       	ld	r24, Y+
+ 2b4:	81 11       	cpse	r24, r1
+ 2b6:	fc cf       	rjmp	.-8      	; 0x2b0 <usart_putline+0xe>
+		USART_Transmit(*buffer);
+		buffer++;
+	}
+
+	// Р—Р°РІРµСЂС€РµРЅРёРµ СЃС‚СЂРѕРєРё СЃРёРјРІРѕР»РѕРј РІРѕР·РІСЂР°С‚Р° РєР°СЂРµС‚РєРё, С‚.Рµ. 0x0D Рё 0x0A
+	USART_Transmit(13);
+ 2b8:	8d e0       	ldi	r24, 0x0D	; 13
+ 2ba:	ef df       	rcall	.-34     	; 0x29a <USART_Transmit>
+	//USART_Transmit(10);
+}
+ 2bc:	df 91       	pop	r29
+ 2be:	cf 91       	pop	r28
+ 2c0:	08 95       	ret
+
+000002c2 <_exit>:
+ 2c2:	f8 94       	cli
+
+000002c4 <__stop_program>:
+ 2c4:	ff cf       	rjmp	.-2      	; 0x2c4 <__stop_program>

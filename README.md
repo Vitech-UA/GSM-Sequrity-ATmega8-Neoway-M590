@@ -1,5 +1,10 @@
 # GSM-Sequrity-ATmega8-Neoway-M590
-# Назва вашого проєкту
+GSM-сигналізація:
+1) MCU: ATmega8
+2) Neoway M590 GSM
+3) Tamper
+4) Siren
+5) Remoute control
 
 ## Процес монтажу (Травень 2018)
 
